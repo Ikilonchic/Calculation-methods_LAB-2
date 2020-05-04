@@ -1,12 +1,14 @@
+from math import *
 from functools import lru_cache
 from integral import *
+
 
 class Simpson:
     def __init__(self, formula: str):
         self._formula = None
 
         try:
-            eval(formula.replace('x', '1'), {'__builtins__':{}})
+            eval(formula.replace('x', '1'), {'__builtins__':{}, 'sqrt': sqrt, 'pow': pow})
         except ZeroDivisionError:
             pass
         except Exception as what:
@@ -15,7 +17,7 @@ class Simpson:
         else:
             def temp(x):
                 try:
-                    return eval(formula.replace('x', str(x)), {'__builtins__':{}})
+                    return eval(formula.replace('x', str(x)), {'__builtins__':{}, 'sqrt': sqrt, 'pow': pow})
                 except ZeroDivisionError:
                     pass
             
