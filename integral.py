@@ -12,7 +12,6 @@ def interval(start, finish = None, step = 1):
         if step <= 0:
             return
         while start < finish:
-            #dot.append(round(start, 4))
             yield start
             start += step
             
@@ -20,7 +19,6 @@ def interval(start, finish = None, step = 1):
         if step >= 0:
             return
         while start > finish:
-            #dot.append(round(start, 4))
             yield start
             start += step
 
@@ -32,7 +30,7 @@ def draw_function(func: 'function', begin: float, end: float, step = 0.01) -> No
     fig, ax = plt.subplots()
     ax.plot(xs, ys, 'r', linewidth=2)
     #ax.set_xlim(bottom=0)
-    #ax.set_ylim(bottom=0)
+    ax.set_ylim(bottom=0)
 
     ix = [x for x in np.arange(begin, end + step, step)]
     iy = [func(x) for x in ix]
