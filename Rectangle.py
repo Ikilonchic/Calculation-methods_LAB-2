@@ -6,7 +6,7 @@ class Rectangle:
         self._formula = None
 
         try:
-            eval(formula.replace('x', '1'))
+            eval(formula.replace('x', '1'), {'__builtins__':{}})
         except ZeroDivisionError:
             pass
         except Exception as what:
@@ -15,7 +15,7 @@ class Rectangle:
         else:
             def temp(x):
                 try:
-                    return eval(formula.replace('x', str(x)))
+                    return eval(formula.replace('x', str(x)), {'__builtins__':{}})
                 except ZeroDivisionError:
                     pass
             
